@@ -31,7 +31,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/Dropdown";
-import type { TreeNode } from "@/hooks/useNodes";
+import type { TreeNode } from "@/services/nodes.service";
 
 const nodeIcons: Record<string, React.ReactNode> = {
   page: <FileText className="h-3.5 w-3.5" />,

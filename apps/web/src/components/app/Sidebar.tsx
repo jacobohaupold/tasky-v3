@@ -7,7 +7,8 @@ import {
 import { cn } from "@/lib/cn";
 import { WorkspaceSwitcher } from "./WorkspaceSwitcher";
 import { PageTree } from "./PageTree";
-import { useNodes } from "@/hooks/useNodes";
+import { useNodeTree } from "@/hooks/useNodeTree";
+import { useCreateNode, useTrashNode, useMoveNode, useUpdateNode, useToggleFavorite } from "@/hooks/useNodeMutations";
 import { useSidebarState } from "@/hooks/useSidebarState";
 import { useRecentViews } from "@/hooks/useRecentViews";
 import { useWorkspace } from "@/contexts/WorkspaceContext";
@@ -55,7 +56,12 @@ export function Sidebar({
 }: SidebarProps) {
   const navigate = useNavigate();
   const { currentWorkspace } = useWorkspace();
-  const { tree, flatNodes, isLoading, createNode, renameNode, softDeleteNode, moveNode, toggleFavorite } = useNodes();
+  const { tree, flatNodes, isLoading } = useNodeTree();
+  const createNode = useCreateNode();
+  const renameNodeMutation = useUpdateNode();
+  const softDeleteNodeMutation = useTrashNode();
+  const moveNodeMutation = useMoveNode();
+  const toggleFavoriteMutation = useToggleFavorite();
   const { expandedIds, toggleExpanded } = useSidebarState();
   const { recentViews } = useRecentViews();
 
@@ -103,46 +109,50 @@ export function Sidebar({
   const handleRenameNode = useCallback(
     async (id: string, title: string) => {
       try {
-        await renameNode.mutateAsync({ id, title });
+        await renameNodeMutation.mutateAsync({ id, data: { title } });
       } catch {
         toast.error("Error al renombrar");
       }
     },
-    [renameNode]
+    [renameNodeMutation]
   );
 
   const handleDeleteNode = useCallback(
     async (id: string) => {
       try {
-        await softDeleteNode.mutateAsync(id);
+        await softDeleteNodeMutation.mutateAsync(id);
         toast.success("Movido a papelera");
       } catch {
         toast.error("Error al eliminar");
       }
     },
-    [softDeleteNode]
+    [softDeleteNodeMutation]
   );
 
   const handleMoveNode = useCallback(
-    async (id: string, parent_id: string | null, position: number) => {
+    async (id: string, parent_id: string | null, _position: number) => {
       try {
-        await moveNode.mutateAsync({ id, parent_id, position });
+        await moveNodeMutation.mutateAsync({
+          nodeId: id,
+          targetParentId: parent_id,
+          allNodes: flatNodes,
+        });
       } catch {
         toast.error("Error al mover");
       }
     },
-    [moveNode]
+    [moveNodeMutation, flatNodes]
   );
 
   const handleToggleFavorite = useCallback(
     async (id: string, isFav: boolean) => {
       try {
-        await toggleFavorite.mutateAsync({ id, isFav });
+        await toggleFavoriteMutation.mutateAsync({ id, isFav });
       } catch {
         toast.error("Error al actualizar favorito");
       }
     },
-    [toggleFavorite]
+    [toggleFavoriteMutation]
   );
 
   const favoriteNodes = flatNodes.filter((n) => n.is_favorite);
