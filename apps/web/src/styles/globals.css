@@ -1,8 +1,23 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @theme {
-  /* ── Brand Colors ── */
-  --color-brand-50: oklch(97% 0.02 260);
+  /* ── Design System — Tasky ─────────────────────────────────── */
+
+  /* Light mode semantic tokens */
+  --color-bg:         #F8FAFC;
+  --color-surface-1:  #FFFFFF;
+  --color-surface-2:  #F1F5F9;
+  --color-border:     #E2E8F0;
+  --color-text:       #1E1E2E;
+  --color-muted:      #6B7280;
+  --color-accent:     #4F46E5;
+  --color-accent-hover: #4338CA;
+  --color-accent-lime: #84CC16;
+  --color-accent-teal: #0D9488;
+
+  /* Brand scale (indigo) */
+  --color-brand-50:  oklch(97% 0.02 260);
   --color-brand-100: oklch(94% 0.05 260);
   --color-brand-200: oklch(88% 0.09 260);
   --color-brand-300: oklch(80% 0.14 260);
@@ -14,100 +29,121 @@
   --color-brand-900: oklch(28% 0.13 260);
   --color-brand-950: oklch(20% 0.09 260);
 
-  /* ── Semantic Surfaces ── */
-  --color-surface-base: oklch(99% 0 0);
-  --color-surface-raised: oklch(98% 0.003 255);
-  --color-surface-overlay: oklch(96% 0.005 255);
-  --color-surface-sunken: oklch(94% 0.007 255);
+  /* Semantic surfaces (legacy compat) */
+  --color-surface-base:    var(--color-surface-1);
+  --color-surface-raised:  #FAFAFE;
+  --color-surface-overlay: #F1F5F9;
+  --color-surface-sunken:  #F1F5F9;
 
-  /* ── Priority Colors ── */
-  --color-priority-urgent: oklch(58% 0.22 25);
-  --color-priority-high: oklch(64% 0.20 45);
-  --color-priority-medium: oklch(70% 0.18 85);
-  --color-priority-low: oklch(62% 0.14 200);
-  --color-priority-none: oklch(65% 0.05 255);
-
-  /* ── Status Colors ── */
-  --color-status-todo: oklch(65% 0.05 255);
-  --color-status-progress: oklch(60% 0.18 230);
-  --color-status-review: oklch(68% 0.18 290);
-  --color-status-done: oklch(60% 0.16 145);
-  --color-status-cancelled: oklch(55% 0.05 255);
+  /* Status / priority */
+  --color-priority-urgent:   oklch(58% 0.22 25);
+  --color-priority-high:     oklch(64% 0.20 45);
+  --color-priority-medium:   oklch(70% 0.18 85);
+  --color-priority-low:      oklch(62% 0.14 200);
+  --color-priority-none:     oklch(65% 0.05 255);
+  --color-status-todo:       oklch(65% 0.05 255);
+  --color-status-progress:   oklch(60% 0.18 230);
+  --color-status-review:     oklch(68% 0.18 290);
+  --color-status-done:       oklch(60% 0.16 145);
+  --color-status-cancelled:  oklch(55% 0.05 255);
 
   /* ── Typography ── */
-  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
 
-  --font-size-2xs: 0.625rem;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
+  --font-size-2xs:  0.625rem;   /* 10px */
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  1.875rem;   /* 30px */
+  --font-size-4xl:  2.125rem;   /* 34px */
 
-  /* ── Spacing Scale ── */
-  --spacing-0: 0;
-  --spacing-px: 1px;
-  --spacing-0\.5: 0.125rem;
-  --spacing-1: 0.25rem;
-  --spacing-1\.5: 0.375rem;
-  --spacing-2: 0.5rem;
-  --spacing-2\.5: 0.625rem;
-  --spacing-3: 0.75rem;
-  --spacing-3\.5: 0.875rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.25rem;
-  --spacing-6: 1.5rem;
-  --spacing-7: 1.75rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-  --spacing-20: 5rem;
-  --spacing-24: 6rem;
+  /* ── Spacing — 8pt grid ── */
+  --spacing-px:   1px;
+  --spacing-0:    0;
+  --spacing-0\.5: 0.125rem;  /* 2  */
+  --spacing-1:    0.25rem;   /* 4  */
+  --spacing-1\.5: 0.375rem;  /* 6  */
+  --spacing-2:    0.5rem;    /* 8  */
+  --spacing-2\.5: 0.625rem;  /* 10 */
+  --spacing-3:    0.75rem;   /* 12 */
+  --spacing-3\.5: 0.875rem;  /* 14 */
+  --spacing-4:    1rem;      /* 16 */
+  --spacing-5:    1.25rem;   /* 20 */
+  --spacing-6:    1.5rem;    /* 24 */
+  --spacing-7:    1.75rem;   /* 28 */
+  --spacing-8:    2rem;      /* 32 */
+  --spacing-10:   2.5rem;    /* 40 */
+  --spacing-12:   3rem;      /* 48 */
+  --spacing-16:   4rem;      /* 64 */
+  --spacing-20:   5rem;      /* 80 */
+  --spacing-24:   6rem;      /* 96 */
 
   /* ── Border Radius ── */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   14px;
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-pill: 9999px;
   --radius-full: 9999px;
 
   /* ── Shadows ── */
-  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.1), 0 4px 6px -4px oklch(0% 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-xl: 0 20px 48px rgba(0,0,0,0.14);
 
-  /* ── Transitions ── */
+  /* ── Motion ── */
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration-fast: 150ms;
-  --duration-base: 200ms;
-  --duration-slow: 300ms;
-  --duration-slower: 500ms;
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+  --duration-slow:   280ms;
+  --duration-slower: 400ms;
 }
 
-/* Dark mode overrides */
+/* ── Dark mode via .dark class ─────────────────────────────────────────────── */
+.dark {
+  --color-bg:        #0F0F1A;
+  --color-surface-1: #1A1A2E;
+  --color-surface-2: #252541;
+  --color-border:    #2D2D4E;
+  --color-text:      #E8E8F0;
+  --color-muted:     #9898B0;
+
+  --color-surface-base:    #1A1A2E;
+  --color-surface-raised:  #1F1F35;
+  --color-surface-overlay: #252541;
+  --color-surface-sunken:  #141426;
+}
+
+/* System dark mode fallback */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-surface-base: oklch(12% 0.01 255);
-    --color-surface-raised: oklch(15% 0.015 255);
-    --color-surface-overlay: oklch(18% 0.018 255);
-    --color-surface-sunken: oklch(10% 0.008 255);
+  :root:not(.light) {
+    --color-bg:        #0F0F1A;
+    --color-surface-1: #1A1A2E;
+    --color-surface-2: #252541;
+    --color-border:    #2D2D4E;
+    --color-text:      #E8E8F0;
+    --color-muted:     #9898B0;
+    --color-surface-base:    #1A1A2E;
+    --color-surface-raised:  #1F1F35;
+    --color-surface-overlay: #252541;
+    --color-surface-sunken:  #141426;
   }
 }
 
-/* Base styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* ── Base styles ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   font-family: var(--font-sans);
@@ -119,29 +155,71 @@ html {
 body {
   margin: 0;
   line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-surface-base);
 }
 
-/* Focus styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* Heading sizes */
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-2xl); font-weight: 600; }
+h3 { font-size: var(--font-size-lg);  font-weight: 600; }
+
+code, pre, kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem; /* 13px */
+}
+
+/* Focus ring */
 :focus-visible {
-  outline: 2px solid var(--color-brand-500);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: oklch(60% 0.05 255 / 0.4);
+  background: rgba(107, 114, 128, 0.35);
   border-radius: var(--radius-full);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: oklch(50% 0.05 255 / 0.6);
+::-webkit-scrollbar-thumb:hover { background: rgba(107, 114, 128, 0.55); }
+
+/* ── Skeleton shimmer animation ──────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 25%,
+    var(--color-border)    50%,
+    var(--color-surface-2) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Selection color ─────────────────────────────────────────────────────── */
+::selection {
+  background: oklch(60% 0.22 260 / 0.2);
+  color: var(--color-text);
 }

@@ -12,6 +12,7 @@ import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
 import ResetPasswordPage from "@/pages/auth/ResetPasswordPage";
 import VerifyEmailPage from "@/pages/auth/VerifyEmailPage";
 import AuthCallbackPage from "@/pages/auth/AuthCallbackPage";
+import DesignSystemPage from "@/pages/DesignSystemPage";
 
 // Layouts
 import AppLayout, { AppHomePage } from "@/layouts/AppLayout";
@@ -98,6 +99,9 @@ export default function App() {
         <Route index element={<AdminHomePage />} />
         <Route path="*" element={<AdminHomePage />} />
       </Route>
+
+      {/* Design system showcase */}
+      <Route path="/design-system" element={<DesignSystemPage />} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
