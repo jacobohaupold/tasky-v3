@@ -1,0 +1,60 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.next
+.expo
+out
+
+# Environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Editor
+.vscode/settings.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Coverage
+coverage
+*.lcov
+.nyc_output
+
+# Cache
+.turbo
+.parcel-cache
+.cache
+
+# Supabase
+supabase/.temp
+supabase/.branches
+
+# TypeScript
+*.tsbuildinfo
+
+# Test
+vitest.coverage
+
+# Mobile
+.expo
+android/
+ios/
