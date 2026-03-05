@@ -1,5 +1,8 @@
 // ── Core Domain Types for Tasky ──
 
+// Re-export auto-generated Supabase database types
+export type { Database, Json } from "./database.types";
+
 export type UUID = string;
 export type ISO8601 = string;
 

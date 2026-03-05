@@ -1,20 +1,5 @@
-// Auto-generated types from Supabase — will be updated with `supabase gen types typescript`
-// Placeholder until schema migrations are run
+// Auto-generated Supabase database types - synced from packages/types/src/database.types.ts
+// Regenerate with: bash scripts/gen-types.sh
 
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[];
-
-export interface Database {
-  public: {
-    Tables: Record<string, never>;
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
-    Enums: Record<string, never>;
-    CompositeTypes: Record<string, never>;
-  };
-}
+// Re-export directly (the types are duplicated here for module resolution simplicity)
+export type { Database, Json } from "./database.generated";
